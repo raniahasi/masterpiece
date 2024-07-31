@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #343a40;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            color: #ffffff;
+            padding: 15px;
+            text-decoration: none;
+            display: block;
+        }
+        .sidebar a:hover {
+            background-color: #007bff;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .card .card-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card .card-body i {
+            font-size: 2rem;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#products"><i class="fas fa-box-open"></i> Products</a>
+        <a href="#orders"><i class="fas fa-shopping-cart"></i> Orders</a>
+        <a href="#customers"><i class="fas fa-users"></i> Customers</a>
+        <a href="#analytics"><i class="fas fa-chart-line"></i> Analytics</a>
+        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+    </div>
+
+    <div class="content">
+        <h2>Dashboard</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <h5>Total Sales</h5>
+                            <p>$250,000</p>
+                            <p class="text-success">↑ 12% vs last month</p>
+                        </div>
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <h5>New Orders</h5>
+                            <p>125</p>
+                            <p class="text-success">↑ 8% vs last week</p>
+                        </div>
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <h5>Top Products</h5>
+                            <p>Glimmer Lamps</p>
+                            <p class="text-success">↑ 15% vs last month</p>
+                        </div>
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <h5>New Customers</h5>
+                            <p>75</p>
+                            <p class="text-success">↑ 10% vs last week</p>
+                        </div>
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <h3>Recent Orders</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1234</td>
+                        <td>John Doe</td>
+                        <td>2023-05-01</td>
+                        <td>$99.99</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                    </tr>
+                    <tr>
+                        <td>#1235</td>
+                        <td>Jane Smith</td>
+                        <td>2023-05-02</td>
+                        <td>$149.99</td>
+                        <td><span class="badge badge-success">Fulfilled</span></td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

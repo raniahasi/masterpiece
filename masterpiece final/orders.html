@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WeCart</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="homepage.css">
+        <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="css/util.css"> -->
+        <!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+        <!-- <link type="text/css" rel="stylesheet" href="css/slick-theme.css"/> -->
+        <!-- <link type="text/css" rel="stylesheet" href="css/style.css"/> -->
+
+
+        <style>
+        
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        #header { background-color:#222;}
+        #top-header {background-color:#222;}
+        .main .categories .category img { border-radius: 10px; }
+        footer { background-color: #222; color: white;padding-top: 80px; }
+        .bg-dark { background-color: #222 !important; }
+        footer .payment-options img {
+            margin: 5px;
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        footer .footer-links { list-style-type: none; padding: 0; margin-top: 20px;  }
+        footer .footer-links li { display: inline; margin: 0 10px; }
+        footer .footer-links li a { text-decoration: none; color: white; }
+        .col-md-9 { font-size: smaller; }
+        #navbarNav { font-size: smaller; }
+        button#searchButton {
+    background-color: #D10024;
+    color:white;
+}
+
+
+</style>
+    </head>
+    <body>
+    <!-- first HEADER -->
+        <header class="bg-dark text-white py-2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-9">
+                        <i class="fas fa-envelope"></i> CONTACT
+                        <i class="far fa-clock ml-3"></i> 10:00 - 22:00
+                        <i class="fas fa-phone-alt ml-3"></i> PHONE: 044397210 / WHATSAPP: 0507502120
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <a href="#" class="text-white mr-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white mr-2"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-white mr-2"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+   
+
+   
+
+   
+    <br>
+
+    <!-- orders -->
+    <div class="container">
+        <h2 class="mb-4" style="text-align: center;">Orders</h2>
+        <div class="input-group mb-3 search-bar">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search orders...">
+            <div class="input-group-append">
+                <button class="btn btn-red" type="button" id="searchButton">Filter</button>
+            </div>
+        </div>
+        <br>
+        <table class="table table-hover order-table">
+            <thead>
+                <tr>
+                    <th>Order #</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody id="orderTableBody">
+                <tr>
+                    <td>ORD001</td>
+                    <td>2023-06-01</td>
+                    <td>$99.99</td>
+                    <td><span class="badge badge-delivered">Delivered</span></td>
+                    <td><button class="btn btn-light btn-feedback"><i class="far fa-star icon"></i> Leave Feedback</button></td>
+                </tr>
+                <tr>
+                    <td>ORD002</td>
+                    <td>2023-05-15</td>
+                    <td>$49.99</td>
+                    <td><span class="badge badge-pending">Pending</span></td>
+                    <td><button class="btn btn-light btn-feedback"><i class="far fa-star icon"></i> Leave Feedback</button></td>
+                </tr>
+                <tr>
+                    <td>ORD003</td>
+                    <td>2023-04-20</td>
+                    <td>$79.99</td>
+                    <td><span class="badge badge-cancelled">Cancelled</span></td>
+                    <td><button class="btn btn-light btn-feedback"><i class="far fa-star icon"></i> Leave Feedback</button></td>
+                </tr>
+                <tr>
+                    <td>ORD004</td>
+                    <td>2023-03-10</td>
+                    <td>$129.99</td>
+                    <td><span class="badge badge-delivered">Delivered</span></td>
+                    <td><button class="btn btn-light btn-feedback"><i class="far fa-star icon"></i> Leave Feedback</button></td>
+                </tr>
+                <tr>
+                    <td>ORD005</td>
+                    <td>2023-02-28</td>
+                    <td>$59.99</td>
+                    <td><span class="badge badge-delivered">Delivered</span></td>
+                    <td><button class="btn btn-light btn-feedback"><i class="far fa-star icon"></i> Leave Feedback</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /orders -->
+
+  
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col payment-options">
+                    <img src="images/wecart.png" alt="WeCart" class="img-fluid">
+                    <img src="images/apple_pay.png" alt="Apple Pay" class="img-fluid">
+                    <img src="images/zelle.png" alt="Zelle" class="img-fluid">
+                    <img src="images/cash.png" alt="Cash" class="img-fluid">
+                    <img src="images/mastercard.png" alt="MasterCard" class="img-fluid">
+                    <img src="images/visa.png" alt="Visa" class="img-fluid">
+                    <img src="images/PayPal.png" alt="PayPal" class="img-fluid">
+                </div>
+            </div>
+            <ul class="footer-links list-inline mt-3">
+                <li class="list-inline-item"><a href="index.html">Home Page</a></li>
+                <li class="list-inline-item"><a href="about.html">About Us</a></li>
+                <li class="list-inline-item"><a href="#">My Account</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="#">Delivery</a></li>
+                <li class="list-inline-item"><a href="#">Refund</a></li>
+                <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+
+    <!-- SIGN IN / SIGN UP MODAL -->
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>My Account</h2>
+            </div>
+            <div class="tab-buttons">
+                <button id="loginTab" class="active" onclick="openTab('login')">Login</button>
+                <button id="signupTab" onclick="openTab('signup')">Sign Up</button>
+            </div>
+            <div id="login" class="tab-content active">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="Username / Email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                    <a href="#" class="float-right">Forgot Password?</a>
+                </div>
+                <div class="form-actions">
+                    <button type="button">Sign in</button>
+                </div>
+            </div>
+            <div id="signup" class="tab-content">
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="signupFirstName">First Name</label>
+                    <input type="text" id="signupFirstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="signupLastName">Last Name</label>
+                    <input type="text" id="signupLastName" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I accept the Terms of Service and Privacy Policy</label>
+                </div>
+                <div class="form-actions">
+                    <button type="button">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery Plugins -->
+    <script src="js2/jquery.min.js"></script>
+    <script src="js2/bootstrap.min.js"></script>
+    <script src="js2/slick.min.js"></script>
+    <script src="js2/nouislider.min.js"></script>
+    <script src="js2/jquery.zoom.min.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        function openTab(tabName) {
+            var i;
+            var x = document.getElementsByClassName("tab-content");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                x[i].classList.remove("active");
+            }
+            var tabButtons = document.getElementsByClassName("tab-buttons")[0].getElementsByTagName("button");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            document.getElementById(tabName + "Tab").classList.add("active");
+        }
+
+        window.onload = function() {
+            document.getElementById('login').style.display = "block";
+            document.getElementById('login').classList.add("active");
+        }
+
+        document.getElementById('accountBtn').onclick = function() {
+            document.getElementById('signInModal').style.display = 'block';
+        }
+
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('signInModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('signInModal')) {
+                document.getElementById('signInModal').style.display = 'none';
+            }
+        }
+    </script>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const searchInput = document.getElementById('searchInput').value.toUpperCase();
+            const table = document.getElementById('orderTableBody');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                const orderId = cells[0].textContent || cells[0].innerText;
+
+                if (orderId.toUpperCase().indexOf(searchInput) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        });
+    </script>
+
+    <!-- Additional scripts -->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function(){
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="vendor/slick/slick.min.js"></script>
+    <script src="js/slick-custom.js"></script>
+    <script src="vendor/parallax100/parallax100.js"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <script src="vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+        $('.gallery-lb').each(function() {
+            $(this).magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                gallery: {
+                    enabled:true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <script src="vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $('.js-addwish-b2').on('click', function(e){
+            e.preventDefault();
+        });
+
+        $('.js-addwish-b2').each(function(){
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+
+        $('.js-addwish-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+
+        $('.js-addcart-detail').each(function(){
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+    </script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/nouislider.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

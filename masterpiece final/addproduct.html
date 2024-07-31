@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .content-wrapper {
+            margin: 20px;
+        }
+        .content-header h1 {
+            font-size: 24px;
+        }
+        .card {
+            margin-top: 20px;
+        }
+        .card-header {
+            font-weight: bold;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <h1>Add New Product</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Product Details
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="productName">Product Name</label>
+                                    <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productDescription">Product Description</label>
+                                    <textarea class="form-control" id="productDescription" rows="5" placeholder="Enter product description"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productPrice">Product Price</label>
+                                    <input type="number" class="form-control" id="productPrice" placeholder="Enter product price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productSalePrice">Sale Price</label>
+                                    <input type="number" class="form-control" id="productSalePrice" placeholder="Enter sale price">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productCategory">Product Category</label>
+                                    <select class="form-control" id="productCategory">
+                                        <option>Gaming PC Setup</option>
+                                        <option>Laptops</option>
+                                        <option>Desktop PCs</option>
+                                        <option>PC Components</option>
+                                        <option>Gaming Monitors</option>
+                                        <option>Keyboards</option>
+                                        <option>Mice</option>
+                                        <option>Headsets</option>
+                                        <option>Gaming Chairs</option>
+                                        <option>Gaming Desks</option>
+                                        <option>Gaming Consoles</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productImage">Product Image</label>
+                                    <input type="file" class="form-control-file" id="productImage">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productGallery">Product Gallery</label>
+                                    <input type="file" class="form-control-file" id="productGallery" multiple>
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="productVirtual">
+                                    <label class="form-check-label" for="productVirtual">Virtual</label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="productDownloadable">
+                                    <label class="form-check-label" for="productDownloadable">Downloadable</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Product</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Publish
+                        </div>
+                        <div class="card-body">
+                            <button class="btn btn-secondary">Save Draft</button>
+                            <button class="btn btn-secondary">Preview</button>
+                            <hr>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control">
+                                    <option>Draft</option>
+                                    <option>Published</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Visibility</label>
+                                <select class="form-control">
+                                    <option>Public</option>
+                                    <option>Private</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary">Publish</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Product Categories
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <input type="checkbox" id="category1">
+                                    <label for="category1">Gaming PC Setup</label>
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" id="category2">
+                                    <label for="category2">Laptops</label>
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" id="category3">
+                                    <label for="category3">Desktop PCs</label>
+                                </li>
+                                <!-- Add more categories as needed -->
+                            </ul>
+                            <button class="btn btn-link">+ Add new category</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Product Brands
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <input type="checkbox" id="brand1">
+                                    <label for="brand1">Brand 1</label>
+                                </li>
+                                <li class="list-group-item">
+                                    <input type="checkbox" id="brand2">
+                                    <label for="brand2">Brand 2</label>
+                                </li>
+                                <!-- Add more brands as needed -->
+                            </ul>
+                            <button class="btn btn-link">+ Add new brand</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

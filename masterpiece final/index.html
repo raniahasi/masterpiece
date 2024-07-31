@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WeCart</title>
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="css2/bootstrap.min.css"/>
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="css2/slick.css"/>
+    <link type="text/css" rel="stylesheet" href="css2/slick-theme.css"/>
+
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="css2/nouislider.min.css"/>
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Custom stylesheet -->
+    <link type="text/css" rel="stylesheet" href="css2/style.css"/>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        #header { background-color:#222;}
+        #top-header {background-color:#222;}
+        .main .categories .category img { border-radius: 10px; }
+        footer { background-color: #222; color: white;padding-top: 80px; }
+        .bg-dark { background-color: #222 !important; }
+        footer .payment-options img {
+            margin: 5px;
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        footer .footer-links { list-style-type: none; padding: 0; margin-top: 20px;  }
+        footer .footer-links li { display: inline; margin: 0 10px; }
+        footer .footer-links li a { text-decoration: none; color: white; }
+        .col-md-9 { font-size: smaller; }
+        #navbarNav { font-size: smaller; }
+        .cart { width: 40px; height: 40px; }
+        .category-item { display: flex; flex-direction: column; align-items: center; }
+        .category-item img { width: 60%; height: 195px; object-fit: cover; }
+         .category-item p { margin-top: 10px; font-weight :600} 
+        .mb-5 {   display: flex; margin-top: -80px; justify-content: center;  }
+        .links { color:#383838;}
+        .main-content { margin-top: 150px; }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #222;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.5);
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .modal-header h2 {
+            margin: 0;
+			color: #ccc;
+        }
+		label {
+    color: white;
+}
+a.float-right {
+    color: white;
+}
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tab-buttons button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: #f1f1f1;
+            cursor: pointer;
+        }
+        .tab-buttons button.active {
+            background: #D10024;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+        .form-actions {
+            text-align: center;
+        }
+        .form-actions button {
+            background: #D10024;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+      
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <!-- TOP HEADER -->
+        <div id="top-header">
+            <div class="container">
+                <ul class="header-links pull-left">
+                    <li><a href="#"><i class="fa fa-phone"></i> +962772382250</a></li>
+                    <li><a href="#"><i class="fa fa-envelope-o"></i> Info@WeCart.com</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker"></i> 21110 Irbid</a></li>
+                </ul>
+                <ul class="header-links pull-right">
+                    <li><a href="#"><i class="fa fa-language"></i> EN/AR</a></li>
+                    <li><a href="#" id="accountBtn"><i class="fa fa-user-o"></i> My Account</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /TOP HEADER -->
+
+        <!-- MAIN HEADER -->
+        <div id="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="#" class="logo">
+                                <img src="./img/logo.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="header-search">
+                            <form>
+                                <select class="input-select">
+                                    <option value="0">Gaming Pc</option>
+                                    <option value="1">Pc Builder</option>
+                                    <option value="2">Monitors </option>
+                                    <option value="3">Accesories </option>
+                                    <option value="4"> Components </option>
+                                    <option value="5"> Laptops </option>
+                                    <option value="6"> Chairs </option>
+                                    <option value="7"> Desks </option>
+                                </select>
+                                <input class="input" placeholder="Search here">
+                                <button class="search-btn">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3 clearfix">
+                        <div class="header-ctn">
+                            <div>
+                                <a href="wishlist.html">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span>Your Wishlist</span>
+                                    <div class="qty">2</div>
+                                </a>
+                            </div>
+                           <!-- Cart -->
+								<div class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										<i class="fa fa-shopping-cart"></i>
+										<span>Your Cart</span>
+										<div class="qty">3</div>
+									</a>
+									<div class="cart-dropdown">
+										<div class="cart-list">
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="images/gamingpc9.png" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+
+											<div class="product-widget">
+												<div class="product-img">
+													<img src="images/headsets.png" alt="">
+												</div>
+												<div class="product-body">
+													<h3 class="product-name"><a href="#">product name goes here</a></h3>
+													<h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+												</div>
+												<button class="delete"><i class="fa fa-close"></i></button>
+											</div>
+										</div>
+										<div class="cart-summary">
+											<small>3 Item(s) selected</small>
+											<h5>SUBTOTAL: $2940.00</h5>
+										</div>
+										<div class="cart-btns">
+											<a href="shoping-cart.html">View Cart</a>
+											<a href="checkout.html">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+								<!-- /Cart -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /MAIN HEADER -->
+    </header>
+    <!-- /HEADER -->
+
+    <!-- NAVIGATION -->
+    <nav id="navigation">
+        <div class="container">
+            <div id="responsive-nav">
+                <ul class="main-nav nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="wishlist.html">Wishlist</a></li>
+                    <li><a href="orders.html">Orders</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /NAVIGATION -->
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <h1 class="mb-5"></h1>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/gamin_pc.png" alt="Gaming PC" class="img-fluid rounded">
+                    <p>Gaming Pc</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/pc_builder.png" alt="PC Builder" class="img-fluid rounded">
+                    <p>PC Builder</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/gaming_pc_setup.png" alt="Gaming PC Setup" class="img-fluid rounded">
+                    <p>Gaming Setup</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/pc_components.png" alt="PC Components" class="img-fluid rounded">
+                    <p>PC Components</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/gaming_monitors.png" alt="Gaming Monitors" class="img-fluid rounded">
+                    <p>Gaming Monitors</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/keyboards.png" alt="Keyboards" class="img-fluid rounded">
+                    <p>Keyboards</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/mice.png" alt="Mice" class="img-fluid rounded">
+                    <p>Mice</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/headsets.png" alt="Headsets" class="img-fluid rounded">
+                    <p>Headsets</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/gaming_chairs.png" alt="Gaming Chairs" class="img-fluid rounded">
+                    <p>Gaming Chairs</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/gaming_desks.png" alt="Gaming Desks" class="img-fluid rounded">
+                    <p>Gaming Desks</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/gaming_consoles.png" alt="Gaming Consoles" class="img-fluid rounded">
+                    <p>Gaming Consoles</p>
+                </a>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="categories.html" class="category-item">
+                    <img src="images/laptops.png" alt="Gaming Consoles" class="img-fluid rounded">
+                    <p>Laptops</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+<br> <br> <br>
+
+
+	<!-- SECTION -->
+	<div class="section">
+		<!-- container -->
+		<div class="container">
+			<!-- row -->
+			<div class="row">
+
+				<!-- section title -->
+				<div class="col-md-12">
+					<div class="section-title">
+						<h3 class="title" style="font-size: small; color: #888888ad; font-weight: 100;"> New Products</h3>
+						<div class="section-nav">
+							
+						</div>
+					</div>
+				</div>
+				<!-- /section title -->
+
+				<!-- Products tab & slick -->
+				<div class="col-md-12">
+					<div class="row">
+						<div class="products-tabs">
+							<!-- tab -->
+							<div id="tab1" class="tab-pane active">
+								<div class="products-slick" data-nav="#slick-nav-1">
+									<!-- product -->
+									<div class="product">
+										<div class="product-img">
+											<img src="images/gamingpc6.png" alt="">
+											<div class="product-label">
+												<span class="sale">-30%</span>
+												<span class="new">NEW</span>
+											</div>
+										</div>
+										<div class="product-body">
+											<p class="product-category">Category</p>
+											<h3 class="product-name"><a href="#">product name goes here</a></h3>
+											<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+											<div class="product-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+											<div class="product-btns">
+												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											</div>
+										</div>
+										<div class="add-to-cart">
+											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										</div>
+									</div>
+									<!-- /product -->
+
+									<!-- product -->
+									<div class="product">
+										<div class="product-img">
+											<img src="images/gaming_consoles.png" alt="">
+											<div class="product-label">
+												<span class="new">NEW</span>
+											</div>
+										</div>
+										<div class="product-body">
+											<p class="product-category">Category</p>
+											<h3 class="product-name"><a href="#">product name goes here</a></h3>
+											<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+											<div class="product-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star-o"></i>
+											</div>
+											<div class="product-btns">
+												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											</div>
+										</div>
+										<div class="add-to-cart">
+											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										</div>
+									</div>
+									<!-- /product -->
+
+									<!-- product -->
+									<div class="product">
+										<div class="product-img">
+											<img src="images/keyboards.png" alt="">
+											<div class="product-label">
+												<span class="sale">-30%</span>
+											</div>
+										</div>
+										<div class="product-body">
+											<p class="product-category">Category</p>
+											<h3 class="product-name"><a href="#">product name goes here</a></h3>
+											<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+											<div class="product-rating">
+											</div>
+											<div class="product-btns">
+												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											</div>
+										</div>
+										<div class="add-to-cart">
+											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										</div>
+									</div>
+									<!-- /product -->
+
+									<!-- product -->
+									<div class="product">
+										<div class="product-img">
+											<img src="images/gamingpc3.png" alt="">
+										</div>
+										<div class="product-body">
+											<p class="product-category">Category</p>
+											<h3 class="product-name"><a href="#">product name goes here</a></h3>
+											<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+											<div class="product-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+											<div class="product-btns">
+												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											</div>
+										</div>
+										<div class="add-to-cart">
+											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										</div>
+									</div>
+									<!-- /product -->
+
+									<!-- product -->
+									<div class="product">
+										<div class="product-img">
+											<img src="images/headsets.png" alt="">
+										</div>
+										<div class="product-body">
+											<p class="product-category">Category</p>
+											<h3 class="product-name"><a href="#">product name goes here</a></h3>
+											<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+											<div class="product-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+											<div class="product-btns">
+												<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+												<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											</div>
+										</div>
+										<div class="add-to-cart">
+											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										</div>
+									</div>
+									<!-- /product -->
+								</div>
+								<div id="slick-nav-1" class="products-slick-nav"></div>
+							</div>
+							<!-- /tab -->
+						</div>
+					</div>
+				</div>
+				<!-- Products tab & slick -->
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /SECTION -->
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-4 col-xs-6">
+				<div class="section-title">
+					<h4 class="title"style="font-size: small; color: #888888ad; font-weight: 100;">Top selling</h4>
+					<div class="section-nav">
+						<div id="slick-nav-3" class="products-slick-nav"></div>
+					</div>
+				</div>
+
+				<div class="products-widget-slick" data-nav="#slick-nav-3">
+					<div>
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gaming_chairs.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamingpc6.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamingpc10.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- product widget -->
+					</div>
+
+					<div>
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gaming_monitors.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/liquidcooler.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/ram.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">Rams</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- product widget -->
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-xs-6">
+				<div class="section-title">
+					<h4 class="title"style="font-size: small; color: #888888ad; font-weight: 100;">Top selling</h4>
+					<div class="section-nav">
+						<div id="slick-nav-4" class="products-slick-nav"></div>
+					</div>
+				</div>
+
+				<div class="products-widget-slick" data-nav="#slick-nav-4">
+					<div>
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gaming_desks.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gaming_pc_setup.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/pc_components.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- product widget -->
+					</div>
+
+					<div>
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamingpc5.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="./img/product08.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamingpc4.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- product widget -->
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix visible-sm visible-xs"></div>
+
+			<div class="col-md-4 col-xs-6">
+				<div class="section-title">
+					<h4 class="title"style="font-size: small; color: #888888ad; font-weight: 100;">Top selling</h4>
+					<div class="section-nav">
+						<div id="slick-nav-5" class="products-slick-nav"></div>
+					</div>
+				</div>
+
+				<div class="products-widget-slick" data-nav="#slick-nav-5">
+					<div>
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamingpc3.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamingpcpro1.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamingpc7.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- product widget -->
+					</div>
+
+					<div>
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/gamin_pc.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="images/rgbmouse.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- /product widget -->
+
+						<!-- product widget -->
+						<div class="product-widget">
+							<div class="product-img">
+								<img src="./img/product06.png" alt="">
+							</div>
+							<div class="product-body">
+								<p class="product-category">Category</p>
+								<h3 class="product-name"><a href="#">product name goes here</a></h3>
+								<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+							</div>
+						</div>
+						<!-- product widget -->
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /SECTION -->
+
+
+
+
+
+		<!-- NEWSLETTER -->
+		<div id="newsletter" class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="newsletter">
+							<p>Sign Up for the <strong>NEWSLETTER</strong></p>
+							<form>
+								<input class="input" type="email" placeholder="Enter Your Email">
+								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
+							</form>
+							<ul class="newsletter-follow">
+								<li>
+									<a href="#"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-instagram"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-pinterest"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /NEWSLETTER -->
+    <!-- FOOTER -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col payment-options">
+                    <img src="images/wecart.png" alt="WeCart" class="img-fluid">
+                    <img src="images/apple_pay.png" alt="Apple Pay" class="img-fluid">
+                    <img src="images/zelle.png" alt="Zelle" class="img-fluid">
+                    <img src="images/cash.png" alt="Cash" class="img-fluid">
+                    <img src="images/mastercard.png" alt="MasterCard" class="img-fluid">
+                    <img src="images/visa.png" alt="Visa" class="img-fluid">
+                    <img src="images/PayPal.png" alt="PayPal" class="img-fluid">
+                </div>
+            </div>
+            <ul class="footer-links list-inline mt-3">
+                <li class="list-inline-item"><a href="index.html">Home Page</a></li>
+                <li class="list-inline-item"><a href="about.html">About Us</a></li>
+                <li class="list-inline-item"><a href="#">My Account</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="#">Delivery</a></li>
+                <li class="list-inline-item"><a href="#">Refund</a></li>
+                <li class="list-inline-item"><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+
+    <!-- SIGN IN / SIGN UP MODAL -->
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>My Account</h2>
+            </div>
+            <div class="tab-buttons">
+                <button id="loginTab" class="active" onclick="openTab('login')">Login</button>
+                <button id="signupTab" onclick="openTab('signup')">Sign Up</button>
+            </div>
+            <div id="login" class="tab-content active">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="Username / Email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember me</label>
+                    <a href="#" class="float-right">Forgot Password?</a>
+                </div>
+                <div class="form-actions">
+                    <button type="button">Sign in</button>
+                </div>
+            </div>
+            <div id="signup" class="tab-content">
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="signupFirstName">First Name</label>
+                    <input type="text" id="signupFirstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="signupLastName">Last Name</label>
+                    <input type="text" id="signupLastName" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm Password">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I accept the Terms of Service and Privacy Policy</label>
+                </div>
+                <div class="form-actions">
+                    <button type="button">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery Plugins -->
+    <script src="js2/jquery.min.js"></script>
+    <script src="js2/bootstrap.min.js"></script>
+    <script src="js2/slick.min.js"></script>
+    <script src="js2/nouislider.min.js"></script>
+    <script src="js2/jquery.zoom.min.js"></script>
+    <script src="js2/main.js"></script>
+    <script>
+        function openTab(tabName) {
+            var i;
+            var x = document.getElementsByClassName("tab-content");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                x[i].classList.remove("active");
+            }
+            var tabButtons = document.getElementsByClassName("tab-buttons")[0].getElementsByTagName("button");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            document.getElementById(tabName + "Tab").classList.add("active");
+        }
+
+        window.onload = function() {
+            document.getElementById('login').style.display = "block";
+            document.getElementById('login').classList.add("active");
+        }
+
+        document.getElementById('accountBtn').onclick = function() {
+            document.getElementById('signInModal').style.display = 'block';
+        }
+
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('signInModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('signInModal')) {
+                document.getElementById('signInModal').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
